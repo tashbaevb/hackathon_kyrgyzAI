@@ -46,6 +46,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'account',
     'content',
+    'course',
+    'lesson',
 ]
 
 MIDDLEWARE = [
@@ -153,6 +155,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 BOOKS_FOLDER = 'books/'
+IMAGE_FOLDER = 'image/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
