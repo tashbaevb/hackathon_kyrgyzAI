@@ -1,8 +1,10 @@
+from django.shortcuts import get_object_or_404
 from rest_framework.response import Response
 from rest_framework_simplejwt.tokens import RefreshToken, AccessToken
 from rest_framework import permissions, generics, status, views
 
 from . import models as m, serializers as s
+from .serializers import ProfileSerializer
 
 
 class RegisterAPIView(generics.CreateAPIView):
@@ -70,3 +72,24 @@ class LogoutAPIView(views.APIView):
             {'Сообщение': 'Пользователь успешно вышел из системы.'},
             status=status.HTTP_200_OK
         )
+
+
+class ProfileAPIView(generics.RetrieveUpdateAPIView):
+    permission_classes = [permissions.IsAuthenticated]
+    serializer_class = ProfileSerializer
+
+    def patch(self, request, *args, **kwargs):
+        user = self.request.user
+        my_profile = get_object_or_404(m.Profile, user=user)
+        my_profile.avatar = self.request.data.get('avatar')
+        serializer = ProfileSerializer(my_profile, data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+
+        return Response(
+            {'Сообщение': 'Профиль успешно обновлен'},
+            status=status.HTTP_200_OK
+        )
+
+
+

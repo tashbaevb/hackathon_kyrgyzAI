@@ -36,3 +36,17 @@ class User(AbstractUser):
         if self.password and not self.password.startswith(("pbkdf2_sha256$", "bcrypt")):
             self.set_password(self.password)
         super().save(*args, **kwargs)
+
+
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
+    avatar = models.ImageField(upload_to='')
+    bio = models.TextField()
+    number = models.CharField(max_length=12, blank=True, null=True)
+
+    def __str__(self):
+        return f"{self.user.username}'s profile"
+
+
+
+

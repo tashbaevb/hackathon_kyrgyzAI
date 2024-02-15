@@ -16,3 +16,10 @@ class LoginSerializer(serializers.ModelSerializer):
     class Meta:
         model = m.User
         fields = ['email', 'password']
+
+
+class ProfileSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = m.Profile
+        fields = '__all__'
