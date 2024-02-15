@@ -20,6 +20,13 @@ class Book(models.Model):
     def __str__(self):
         return self.title
 
+class Grammar(models.Model):
+    title = models.CharField(max_length=150)
+    description = models.TextField()
+    example = models.TextField()
+    note = models.TextField(null=True, blank=True)
+
+
 class Word(models.Model):
     title = models.CharField(max_length=150)
     translation = models.CharField(max_length=150)
@@ -30,6 +37,5 @@ class Sentence(models.Model):
 
 
 class Dictation(models.Model):
+    title = models.CharField(max_length=150)
     text = models.TextField()
-
-
