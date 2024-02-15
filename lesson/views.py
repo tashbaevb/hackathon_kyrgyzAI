@@ -1,5 +1,5 @@
 from rest_framework.response import Response
-from rest_framework import generics, permissions
+from rest_framework import generics, permissions, views
 
 from . import models as m, serializers as s
 
@@ -21,11 +21,14 @@ class LessonPassAPIView(generics.CreateAPIView):
         serializer.is_valid(raise_exception=True)
         serializer.save()
 
-        return Response({'message': 'Вы успешно прошли курс'})
+        return Response({'message': 'Вы успешно прошли урок'})
 
 
-class CheckLessonAPIView(generics.CreateAPIView):
-    pass
+class LessonCheckAPIView(views.APIView):
+
+    def post(self, request, *args, **kwargs):
+        lesson = m.Lesson.objects.filter(request.data['id'])
+        return m.UserLesson.objects.get(user=request.user, lesson=lesson.previous_lesson).exists()
 
 
 class LessonListAPIView(generics.ListAPIView):
