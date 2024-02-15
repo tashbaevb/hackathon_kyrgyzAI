@@ -1,12 +1,13 @@
 from django.core.validators import FileExtensionValidator
 from django.db import models
 
-from main.settings import BOOKS_FOLDER
+from main.settings import BOOKS_FOLDER, IMAGE_FOLDER
 
 
 class Book(models.Model):
     title = models.CharField(max_length=100)
     description = models.TextField()
+    image = models.ImageField(upload_to=IMAGE_FOLDER)
     file = models.FileField(
         upload_to=BOOKS_FOLDER,
         validators=[FileExtensionValidator(
