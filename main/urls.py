@@ -25,6 +25,7 @@ urlpatterns = [
     path('course/', include('course.urls')),
     path('content/', include('content.urls')),
     path('api/v1/lessons/', include('lesson.urls')),
+    path('ai/', include('tts_api.urls')),
 
     # Swagger
     path('swagger<str:format>', schema_view.without_ui(cache_timeout=0), name='schema-json'),

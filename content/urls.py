@@ -10,5 +10,5 @@ urlpatterns = [
     path("word/", v.WordListAPIView.as_view(), name='word-list'),
     path("word/<int:pk>/", v.WordDetailAPIView.as_view(), name="word-detail"),
     path("sentence/", v.SentenceListAPIView.as_view(), name='sentence-list'),
-    path("sentence/<int:pk>/", v.SentenceDetailAPIView.as_view(), name="sentence-detail")
+    path("sentence/<int:pk>/", v.SentenceDetailAPIView.as_view(), name="sentence-detail"),
 ]
