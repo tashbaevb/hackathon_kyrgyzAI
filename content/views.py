@@ -1,5 +1,4 @@
-from rest_framework.response import Response
-from rest_framework import permissions, generics, status, views
+from rest_framework import permissions, generics
 
 from . import models as m, serializers as s
 
@@ -7,48 +6,43 @@ from . import models as m, serializers as s
 class BookListAPIView(generics.ListAPIView):
     queryset = m.Book.objects.all()
     serializer_class = s.BookSerializer
-    permission_classes = [permissions.IsAuthenticated]
 
 
 class BookDetailAPIView(generics.RetrieveAPIView):
     queryset = m.Book.objects.all()
     serializer_class = s.BookSerializer
-    permission_classes = [permissions.IsAuthenticated]
 
 
 class GrammarListAPIView(generics.ListAPIView):
     queryset = m.Grammar.objects.all()
     serializer_class = s.GrammarSerializer
-    permission_classes = [permissions.IsAuthenticated]
 
 
 class GrammarDetailAPIView(generics.RetrieveAPIView):
     queryset = m.Grammar.objects.all()
     serializer_class = s.GrammarSerializer
-    permission_classes = [permissions.IsAuthenticated]
 
 
 class WordListAPIView(generics.ListAPIView):
     queryset = m.Word.objects.all()
     serializer_class = s.WordSerializer
-    permission_classes = [permissions.IsAuthenticated]
 
 
 class WordDetailAPIView(generics.RetrieveAPIView):
     queryset = m.Word.objects.all()
     serializer_class = s.WordSerializer
-    permission_classes = [permissions.IsAuthenticated]
 
 
 class SentenceListAPIView(generics.ListAPIView):
     queryset = m.Sentence.objects.all()
     serializer_class = s.SentenceSerializer
-    permission_classes = [permissions.IsAuthenticated]
 
 
 class SentenceDetailAPIView(generics.RetrieveAPIView):
     queryset = m.Sentence.objects.all()
     serializer_class = s.SentenceSerializer
-    permission_classes = [permissions.IsAuthenticated]
 
 
+class LessonGrammarListApiView(generics.ListCreateAPIView):
+    queryset = m.LessonGrammar.objects.all()
+    serializer_class = s.LessonGrammarSerializer

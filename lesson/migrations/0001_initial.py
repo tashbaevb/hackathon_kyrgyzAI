@@ -10,25 +10,27 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
+        ('course', '0001_initial'),
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Course',
+            name='Lesson',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('level', models.CharField(choices=[('Начинающий', 'Начинающий'), ('Средний', 'Средний'), ('Продвинутый', 'Продвинутый')], max_length=100)),
-                ('title', models.CharField(max_length=150)),
+                ('title', models.CharField(max_length=100)),
                 ('description', models.TextField()),
+                ('course', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='lessons', to='course.course')),
+                ('previous_lesson', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, related_name='next_lesson', to='lesson.lesson')),
             ],
         ),
         migrations.CreateModel(
-            name='UserCourse',
+            name='UserLesson',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('course', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='enrolled_users', to='course.course')),
-                ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='enrolled_courses', to=settings.AUTH_USER_MODEL)),
+                ('lesson', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='users', to='lesson.lesson')),
+                ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='lessons', to=settings.AUTH_USER_MODEL)),
             ],
         ),
     ]

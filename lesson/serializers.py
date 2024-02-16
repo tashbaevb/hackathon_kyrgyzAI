@@ -3,20 +3,21 @@ from rest_framework import serializers
 from . import models as m
 
 
-class CourseSerializer(serializers.ModelSerializer):
+class LessonSerializer(serializers.ModelSerializer):
+
     class Meta:
-        model = m.Course
+        model = m.Lesson
         fields = '__all__'
 
 
-class UserCourseSerializer(serializers.ModelSerializer):
+class UserLessonSerializer(serializers.ModelSerializer):
+
     class Meta:
-        model = m.UserCourse
+        model = m.UserLesson
         fields = '__all__'
 
     def to_representation(self, instance):
         representation = super().to_representation(instance)
         representation['user_name'] = instance.user.username
-        representation['course_name'] = instance.course.title
+        representation['course_name'] = instance.lesson.title
         return representation
-

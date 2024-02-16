@@ -1,10 +1,9 @@
 from django.urls import path
-from .views import LearningProgramListCreate, LessonListCreate, QuizListCreate, SentenceListCreate, TextToSpeech
+from .views import CoursePassAPIView, CourseListAPIView, CourseDetailAPIView, MyCourseListAPIView
 
 urlpatterns = [
-    path('learning-programs/', LearningProgramListCreate.as_view(), name='learning-programs'),
-    path('lessons/', LessonListCreate.as_view(), name='lessons'),
-    path('quizzes/', QuizListCreate.as_view(), name='quizzes'),
-    path('sentences/', SentenceListCreate.as_view(), name='sentence-list-create'),
-    path('text-to-speech/', TextToSpeech.as_view(), name='text-to-speech'),
+    path('submit', CoursePassAPIView.as_view()),
+    path('all', CourseListAPIView.as_view()),
+    path('<int:pk>', CourseDetailAPIView.as_view()),
+    path('my', MyCourseListAPIView.as_view()),
 ]
