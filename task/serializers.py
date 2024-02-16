@@ -25,3 +25,9 @@ class ExampleSerializer(serializers.ModelSerializer):
         representation = super().to_representation(instance)
         representation['task_name'] = instance.task.title
         return representation
+
+
+class QuestionSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = m.Question
+        fields = '__all__'

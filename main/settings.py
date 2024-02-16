@@ -51,7 +51,6 @@ INSTALLED_APPS = [
     'course',
     'lesson',
     'task',
-    'my_test',
     'tts_api',
 ]
 
