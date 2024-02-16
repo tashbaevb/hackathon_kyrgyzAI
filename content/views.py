@@ -52,3 +52,14 @@ class SentenceDetailAPIView(generics.RetrieveAPIView):
     permission_classes = [permissions.IsAuthenticated]
 
 
+class DictationListAPIView(generics.ListAPIView):
+    queryset = m.Dictation.objects.all()
+    serializer_class = s.DictationSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+
+class DictationDetailAPIView(generics.RetrieveAPIView):
+    queryset = m.Dictation.objects.all()
+    serializer_class = s.DictationSerializer
+    permission_classes = [permissions.IsAuthenticated]
+

@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-en5b-nud-kgi_zs(muo9o0$4z#p)y1&3bfp7shd_mxwd9pb-u)
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['sanjarman.pythonanywhere.com', '127.0.0.1']
+ALLOWED_HOSTS = ['sanjarman.pythonanywhere.com', '127.0.0.1', '*']
 
 CORS_ALLOWED_ORIGINS = ['http://127.0.0.1:5173',
                         'http://127.0.0.1:5174',
@@ -50,7 +50,6 @@ INSTALLED_APPS = [
     'content',
     'course',
     'lesson',
-    'task',
     'tts_api',
 ]
 
