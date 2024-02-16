@@ -21,3 +21,21 @@ class UserLessonSerializer(serializers.ModelSerializer):
         representation['user_name'] = instance.user.username
         representation['course_name'] = instance.lesson.title
         return representation
+
+
+class ExampleSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = m.Example
+        fields = '__all__'
+
+    def to_representation(self, instance):
+        representation = super().to_representation(instance)
+        representation['task_name'] = instance.task.title
+        return representation
+
+
+class QuestionSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = m.Question
+        fields = '__all__'
