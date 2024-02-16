@@ -21,7 +21,7 @@ def text_to_speech(request):
         return Response({'error': 'Ошибка при отправке данных на другой backend'}, status=response.status_code)
 
     if 'audio' in response.headers.get('Content-Type', ''):
-        audio_data = response.content
-        return HttpResponse(audio_data, content_type=response.headers['Content-Type'])
+        print(response.headers['Content-Type'])
+        return HttpResponse(response, content_type=response.headers['Content-Type'])
 
     return Response(response.json(), status=status.HTTP_200_OK)
