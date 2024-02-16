@@ -32,9 +32,12 @@ class LessonCheckAPIView(views.APIView):
 
 
 class LessonListAPIView(generics.ListAPIView):
-    queryset = m.Lesson.objects.all()
     serializer_class = s.LessonSerializer
     permission_classes = [permissions.IsAuthenticated]
+
+    def get_queryset(self):
+        course_id = self.kwargs.get('pk')
+        return m.Lesson.objects.filter(course_id=course_id)
 
 
 class LessonDetailAPIView(generics.RetrieveAPIView):
