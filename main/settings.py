@@ -25,8 +25,14 @@ SECRET_KEY = 'django-insecure-en5b-nud-kgi_zs(muo9o0$4z#p)y1&3bfp7shd_mxwd9pb-u)
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['sanjarman.pythonanywhere.com', '127.0.0.1']
 
+CORS_ALLOWED_ORIGINS = ['http://127.0.0.1:5173',
+                        'http://127.0.0.1:5174',
+                        'http://localhost:5173',
+                        'http://localhost:5174']
+
+CORS_ALLOW_ALL_ORIGINS = True
 # Application definition
 
 INSTALLED_APPS = [
@@ -44,6 +50,8 @@ INSTALLED_APPS = [
     'content',
     'course',
     'lesson',
+    'task',
+    'tts_api',
 ]
 
 MIDDLEWARE = [
@@ -151,7 +159,8 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 BOOKS_FOLDER = 'books/'
-IMAGE_FOLDER = 'image/'
+BOOK_IMAGE_FOLDER = 'image/books/'
+LESSON_IMAGE_FOLDER = 'image/lessons/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field

@@ -9,6 +9,10 @@ class TaskListAPIView(generics.ListAPIView):
     serializer_class = s.TaskSerializer
     permission_classes = [permissions.IsAuthenticated]
 
+    def get_queryset(self):
+        lesson_id = self.kwargs.get('pk')
+        return m.Task.objects.filter(lesson_id=lesson_id)
+
 
 class TaskDetailAPIView(generics.RetrieveAPIView):
     queryset = m.Task.objects.all()
@@ -26,3 +30,12 @@ class ExampleDetailAPIView(generics.RetrieveAPIView):
     queryset = m.Example.objects.all()
     serializer_class = s.ExampleSerializer
     permission_classes = [permissions.IsAuthenticated]
+
+
+class QuestionListAPIView(generics.ListAPIView):
+    serializer_class = s.QuestionSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get_queryset(self):
+        pk = self.kwargs['pk']
+        return m.Question.objects.filter(lesson_id=pk)
