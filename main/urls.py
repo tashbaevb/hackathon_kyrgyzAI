@@ -41,6 +41,10 @@ urlpatterns = [
     path('api/v1/users/', include('account.urls')),
     path('api/v1/courses/', include('course.urls')),
     path('api/v1/lessons/', include('lesson.urls')),
+    path('api/v1/tasks/', include('task.urls')),
+    path('api/v1/tests/', include('my_test.urls')),
+    path('api/v1/tts/', include('tts_api.urls')),
+
 
     # Swagger
     path('swagger<str:format>', schema_view.without_ui(cache_timeout=0), name='schema-json'),
