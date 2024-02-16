@@ -23,26 +23,6 @@ class GrammarDetailAPIView(generics.RetrieveAPIView):
     serializer_class = s.GrammarSerializer
 
 
-class WordListAPIView(generics.ListAPIView):
-    queryset = m.Word.objects.all()
-    serializer_class = s.WordSerializer
-
-
-class WordDetailAPIView(generics.RetrieveAPIView):
-    queryset = m.Word.objects.all()
-    serializer_class = s.WordSerializer
-
-
-class SentenceListAPIView(generics.ListAPIView):
-    queryset = m.Sentence.objects.all()
-    serializer_class = s.SentenceSerializer
-
-
-class SentenceDetailAPIView(generics.RetrieveAPIView):
-    queryset = m.Sentence.objects.all()
-    serializer_class = s.SentenceSerializer
-
-
 class LessonGrammarListApiView(generics.ListCreateAPIView):
     queryset = m.LessonGrammar.objects.all()
     serializer_class = s.LessonGrammarSerializer

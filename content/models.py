@@ -22,20 +22,6 @@ class Grammar(models.Model):
     note = models.TextField(null=True, blank=True)
 
 
-class Word(models.Model):
-    title = models.CharField(max_length=150)
-    translation = models.CharField(max_length=150)
-
-
-class Sentence(models.Model):
-    text = models.TextField()
-
-
-class Dictation(models.Model):
-    title = models.CharField(max_length=150)
-    text = models.TextField()
-
-
 class LessonGrammar(models.Model):
     title = models.CharField(max_length=200)
     description = models.TextField()
