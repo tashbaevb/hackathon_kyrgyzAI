@@ -11,7 +11,8 @@ class Lesson(models.Model):
     image = models.ImageField(upload_to=LESSON_IMAGE_FOLDER, null=True)
     description = models.TextField()
     course = models.ForeignKey(Course, on_delete=models.CASCADE, related_name='lessons')
-    previous_lesson = models.OneToOneField('self', on_delete=models.CASCADE, related_name='next_lesson')
+    previous_lesson = models.OneToOneField('self', on_delete=models.CASCADE, related_name='next_lesson',
+                                           null=True, blank=True)
 
 
 class UserLesson(models.Model):
