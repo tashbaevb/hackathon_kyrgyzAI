@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import LearningProgram, Lesson, Quiz
+from .models import LearningProgram, Lesson, Quiz, Sentence
 
 
 class LearningProgramSerializer(serializers.ModelSerializer):
@@ -17,4 +17,10 @@ class LessonSerializer(serializers.ModelSerializer):
 class QuizSerializer(serializers.ModelSerializer):
     class Meta:
         model = Quiz
+        fields = '__all__'
+
+
+class SentenceSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Sentence
         fields = '__all__'

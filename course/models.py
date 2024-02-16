@@ -28,7 +28,25 @@ class Quiz(models.Model):
     lesson = models.ForeignKey(Lesson, on_delete=models.CASCADE)
     question = models.CharField(max_length=200)
     correct_answer = models.CharField(max_length=250)
+    incorrect_answer1 = models.CharField(max_length=250)
+    incorrect_answer2 = models.CharField(max_length=250)
     explanation = models.TextField()
 
     def __str__(self):
         return self.question
+
+
+class Word(models.Model):
+    title = models.CharField(max_length=150)
+    translation = models.CharField(max_length=150)
+
+
+class Sentence(models.Model):
+    text = models.TextField()
+    audio_url = models.URLField(blank=True, null=True)  # Поле для хранения ссылки на аудио
+
+
+
+class Dictation(models.Model):
+    title = models.CharField(max_length=150)
+    text = models.TextField()
