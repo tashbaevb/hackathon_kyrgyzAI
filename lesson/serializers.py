@@ -4,14 +4,12 @@ from . import models as m
 
 
 class LessonSerializer(serializers.ModelSerializer):
-
     class Meta:
         model = m.Lesson
         fields = '__all__'
 
 
 class UserLessonSerializer(serializers.ModelSerializer):
-
     class Meta:
         model = m.UserLesson
         fields = '__all__'
@@ -24,7 +22,6 @@ class UserLessonSerializer(serializers.ModelSerializer):
 
 
 class ExampleSerializer(serializers.ModelSerializer):
-
     class Meta:
         model = m.Example
         fields = '__all__'
@@ -39,3 +36,14 @@ class QuestionSerializer(serializers.ModelSerializer):
     class Meta:
         model = m.Question
         fields = '__all__'
+
+
+class TranslateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = m.Translate
+        fields = '__all__'
+
+
+class TTSSerializer(serializers.Serializer):
+    text = serializers.CharField()
+    speaker_id = serializers.IntegerField(default=1)

@@ -50,7 +50,6 @@ INSTALLED_APPS = [
     'content',
     'course',
     'lesson',
-    'task',
     'tts_api',
 ]
 
@@ -122,7 +121,6 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 AUTH_USER_MODEL = 'account.User'
-
 
 REST_FRAMEWORK = {
     "DEFAULT_PERMISSION_CLASSES": ("rest_framework.permissions.AllowAny",),

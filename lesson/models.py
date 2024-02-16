@@ -33,3 +33,7 @@ class Question(models.Model):
     answer_1 = models.CharField(max_length=150)
     answer_2 = models.CharField(max_length=150)
     explanation = models.TextField()
+
+
+class Translate(models.Model):
+    text = models.TextField()
