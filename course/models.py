@@ -11,6 +11,7 @@ class Course(models.Model):
     level = models.CharField(max_length=100, choices=LEVEL)
     title = models.CharField(max_length=150)
     description = models.TextField()
+    url = models.CharField(max_length=200)
 
 
 class UserCourse(models.Model):
